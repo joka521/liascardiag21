@@ -28,8 +28,6 @@
     .menu-toggle{display:none;background:none;border:1px solid var(--line);color:white;padding:9px 12px;border-radius:3px;font-size:18px}
     .hero{min-height:760px;height:100svh;max-height:950px;display:flex;align-items:center;position:relative;background:linear-gradient(90deg,rgba(0,0,0,.94),rgba(0,0,0,.62) 58%,rgba(0,0,0,.18)),linear-gradient(0deg,var(--bg),transparent 42%),url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2200&q=85') center/cover}
     .hero-content{padding-top:76px;position:relative;z-index:2}
-    .hero-car{position:absolute;z-index:1;right:1.5%;top:50%;transform:translateY(-42%);width:min(55vw,740px);pointer-events:none}
-    .hero-car img{display:block;width:100%;height:auto;filter:drop-shadow(0 18px 28px rgba(0,0,0,.62))}
     .hero-content .eyebrow,.hero-content h1,.hero-content h2,.hero-content p,.hero-content .actions,.hero-content .location{max-width:53%}
     .eyebrow,.section-label{color:var(--red);font-size:11px;font-weight:800;letter-spacing:4px;text-transform:uppercase}
     .hero h1{font:900 clamp(76px,12vw,140px)/.78 var(--title);letter-spacing:-2px;margin:24px 0}
@@ -86,17 +84,22 @@
     footer p{font-size:10px;color:#777;line-height:2}
     .float-call{position:fixed;right:20px;bottom:20px;z-index:80;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:var(--red);color:#fff;font-size:23px;box-shadow:0 5px 25px #0009}
     .float-call:hover{background:#c9161d}
-    .privacy{font-size:10px;color:#777;margin-top:12px}\n    .hp-field{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
+    .privacy{font-size:10px;color:#777;margin-top:12px}
+    .hp-field{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
     @media(max-width:850px){.quote-layout{grid-template-columns:1fr;gap:28px}.about-grid{gap:30px}}
     @media(max-width:620px){
       nav{height:68px}.logo{font-size:22px}.menu-toggle{display:block}
       .navlinks{display:none;position:absolute;top:68px;left:0;right:0;background:#090909;padding:20px 5%;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:20px}
       .navlinks.open{display:flex}.navlinks a{display:block}.navlinks .navbtn{text-align:center}
-      .hero{min-height:850px;background-position:62% center;align-items:flex-start}
-      .hero-content{padding-top:105px}
+      .hero{min-height:0;height:auto;max-height:none;padding:94px 0 48px;background-position:62% center;align-items:flex-start}
+      .hero-content{padding-top:0}
       .hero-content .eyebrow,.hero-content h1,.hero-content h2,.hero-content p,.hero-content .actions,.hero-content .location{max-width:100%}
-      .hero-car{width:94vw;right:-8%;top:auto;bottom:0;transform:none;opacity:.94}
-      .hero h1{font-size:75px}.hero h2{font-size:26px}
+      .hero h1{font-size:clamp(64px,17vw,82px);line-height:.82;margin:20px 0}
+      .hero h2{font-size:clamp(23px,6vw,28px);max-width:390px}
+      .hero p{font-size:13px;max-width:430px;margin-top:15px}
+      .actions{flex-direction:column;align-items:stretch;max-width:430px;gap:10px;margin-top:24px}
+      .actions .btn{width:100%;min-height:50px;padding:13px 14px;font-size:10px}
+      .location{margin-top:30px;font-size:9px}
       section{padding:64px 0}.services .section-desc{margin-bottom:30px}.service-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
       .service{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:9px;padding:15px 13px;min-height:190px;border-radius:8px}
       .service-icon{width:39px;height:39px;font-size:18px;flex:none}
@@ -123,7 +126,6 @@
   </div>
 
   <header class="hero" id="accueil">
-    <div class="hero-car" aria-hidden="true"><img src="bmw-blanche.png" alt=""></div>
     <div class="wrap hero-content">
       <div class="eyebrow">Automotive electronics · Dijon</div>
       <h1>ILIAS<br><span>CARDIAG</span><br>21.</h1>
