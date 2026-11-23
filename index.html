@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="ILIAS CARDIAG 21 à Dijon : diagnostic électronique automobile, optimisation moteur, clés et maintenance. Demandez votre devis en ligne.">
+  <title>ILIAS CARDIAG 21 | Diagnostic & électronique automobile à Dijon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#080808;--panel:#111;--panel2:#171717;--red:#ed2028;--white:#f7f7f7;--muted:#a2a2a2;--line:rgba(255,255,255,.10);--title:'Barlow Condensed',sans-serif;--body:'Inter',sans-serif}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:84px}
+    body{background:var(--bg);color:var(--white);font-family:var(--body);line-height:1.6;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{width:min(1160px,90%);margin:auto}
+    .topbar{position:fixed;inset:0 0 auto;z-index:100;background:rgba(8,8,8,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    nav{height:78px;width:min(1240px,92%);margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .logo{font:900 27px var(--title);letter-spacing:1px;white-space:nowrap}
+    .logo span,.red{color:var(--red)}
+    .navlinks{display:flex;align-items:center;gap:28px;list-style:none}
+    .navlinks a{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;transition:.2s}
+    .navlinks a:hover{color:var(--red)}
+    .navlinks .navbtn{background:var(--red);padding:12px 18px;border-radius:3px}
+    .menu-toggle{display:none;background:none;border:1px solid var(--line);color:white;padding:9px 12px;border-radius:3px;font-size:18px}
+    .hero{min-height:760px;height:100svh;max-height:950px;display:flex;align-items:center;position:relative;background:linear-gradient(90deg,rgba(0,0,0,.94),rgba(0,0,0,.62) 58%,rgba(0,0,0,.18)),linear-gradient(0deg,var(--bg),transparent 42%),url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2200&q=85') center/cover}
+    .hero-content{padding-top:76px;position:relative;z-index:2}
+    .hero-car{position:absolute;z-index:1;right:1.5%;top:50%;transform:translateY(-42%);width:min(55vw,740px);pointer-events:none}
+    .hero-car img{display:block;width:100%;height:auto;filter:drop-shadow(0 18px 28px rgba(0,0,0,.62))}
+    .hero-content .eyebrow,.hero-content h1,.hero-content h2,.hero-content p,.hero-content .actions,.hero-content .location{max-width:53%}
+    .eyebrow,.section-label{color:var(--red);font-size:11px;font-weight:800;letter-spacing:4px;text-transform:uppercase}
+    .hero h1{font:900 clamp(76px,12vw,140px)/.78 var(--title);letter-spacing:-2px;margin:24px 0}
+    .hero h1 span{color:var(--red)}
+    .hero h2{font:700 clamp(25px,4vw,43px)/1.05 var(--title);text-transform:uppercase;letter-spacing:1px}
+    .hero p{max-width:530px;color:#c2c2c2;font-size:14px;margin-top:20px}
+    .actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:32px}
+    .btn{display:inline-flex;justify-content:center;align-items:center;gap:9px;padding:15px 23px;border:1px solid transparent;border-radius:3px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:.2s}
+    .btn-red{background:var(--red);color:#fff}.btn-red:hover{background:#c9161d;transform:translateY(-2px)}
+    .btn-outline{border-color:#777;color:#fff}.btn-outline:hover{border-color:var(--red);color:var(--red)}
+    .location{margin-top:54px;color:#aaa;font-size:10px;letter-spacing:2px;text-transform:uppercase}
+    .brands{padding:26px 5%;text-align:center;background:#0d0d0d;border-block:1px solid var(--line)}
+    .brands p{font-size:10px;font-weight:800;letter-spacing:3px;color:var(--muted);margin-bottom:14px}
+    .brandlist{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 35px;font:800 23px var(--title);color:#ddd}
+    section{padding:100px 0}
+    .section-title{text-align:center;font:900 clamp(42px,6vw,66px)/1 var(--title);text-transform:uppercase;margin:12px 0 17px}
+    .section-desc{max-width:650px;margin:0 auto 48px;text-align:center;color:var(--muted);font-size:13px}
+    .services{background:#0d0d0d}
+    .service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:stretch}
+    .service{background:linear-gradient(145deg,#191919 0%,#101010 100%);border:1px solid rgba(255,255,255,.10);border-radius:10px;padding:23px 24px;min-height:158px;position:relative;transition:transform .22s,border-color .22s,box-shadow .22s;display:grid;grid-template-columns:48px 1fr;grid-template-rows:auto 1fr;column-gap:15px;align-content:center;align-items:center}
+    .service:after{content:"";position:absolute;bottom:0;left:16px;right:16px;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .22s}
+    .service:hover{transform:translateY(-3px);border-color:rgba(237,32,40,.5);box-shadow:0 10px 24px rgba(0,0,0,.25)}
+    .service:hover:after{transform:scaleX(1)}
+    .service-icon{width:46px;height:46px;border-radius:9px;background:rgba(237,32,40,.12);border:1px solid rgba(237,32,40,.24);display:grid;place-items:center;font-size:21px;color:var(--red);grid-column:1;grid-row:1/3}
+    .service h3{font:800 22px/1.05 var(--title);text-transform:uppercase;margin:0 0 7px;letter-spacing:.3px;grid-column:2}
+    .service p{font-size:11px;line-height:1.6;color:var(--muted);grid-column:2}
+    .service:last-child{grid-column:1/-1;width:calc(50% - 8px);justify-self:center}
+    .about-grid{display:block;max-width:800px}
+    .about-copy .section-title{text-align:left;margin-bottom:22px}
+    .about-copy p{color:var(--muted);font-size:13px;margin-bottom:16px}
+    .checks{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:25px}
+    .checks span{font-size:12px;font-weight:700}.checks b{color:var(--red);margin-right:8px}
+    .quote{background:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.94)),url('https://images.unsplash.com/photo-1489824904134-891ab64532f1?auto=format&fit=crop&w=1800&q=80') center/cover}
+    .quote-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:start}
+    .quote-intro .section-title{text-align:left}
+    .quote-intro p{color:var(--muted);font-size:13px;margin-top:20px}
+    .contact-card{background:rgba(18,18,18,.96);border:1px solid var(--line);padding:30px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+    .field{display:flex;flex-direction:column;gap:7px}
+    .field.full{grid-column:1/-1}
+    label{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#ddd}
+    input,select,textarea{width:100%;background:#090909;border:1px solid #333;color:#fff;padding:13px 12px;font:13px var(--body);border-radius:2px;outline:none}
+    input:focus,select:focus,textarea:focus{border-color:var(--red)}
+    input::placeholder,textarea::placeholder{color:#777}
+    textarea{min-height:115px;resize:vertical}
+    select option{background:#111}
+    .form-foot{margin-top:16px;color:#888;font-size:10px}
+    .form-status{margin-top:13px;font-size:12px;min-height:20px}
+    .form-status.ok{color:#67d391}.form-status.err{color:#ff7777}
+    .submit{width:100%;margin-top:18px}
+    .contact-alt{display:flex;flex-wrap:wrap;gap:15px;margin-top:22px}
+    .contact-alt a{font-size:11px;color:#ddd}.contact-alt a:hover{color:var(--red)}
+    footer{padding:35px 5%;background:#050505;border-top:1px solid var(--line);text-align:center}
+    footer p{font-size:10px;color:#777;line-height:2}
+    .float-call{position:fixed;right:20px;bottom:20px;z-index:80;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:var(--red);color:#fff;font-size:23px;box-shadow:0 5px 25px #0009}
+    .float-call:hover{background:#c9161d}
+    .privacy{font-size:10px;color:#777;margin-top:12px}
+    @media(max-width:850px){.quote-layout{grid-template-columns:1fr;gap:28px}.about-grid{gap:30px}}
+    @media(max-width:620px){
+      nav{height:68px}.logo{font-size:22px}.menu-toggle{display:block}
+      .navlinks{display:none;position:absolute;top:68px;left:0;right:0;background:#090909;padding:20px 5%;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:20px}
+      .navlinks.open{display:flex}.navlinks a{display:block}.navlinks .navbtn{text-align:center}
+      .hero{min-height:850px;background-position:62% center;align-items:flex-start}
+      .hero-content{padding-top:105px}
+      .hero-content .eyebrow,.hero-content h1,.hero-content h2,.hero-content p,.hero-content .actions,.hero-content .location{max-width:100%}
+      .hero-car{width:94vw;right:-8%;top:auto;bottom:0;transform:none;opacity:.94}
+      .hero h1{font-size:75px}.hero h2{font-size:26px}
+      section{padding:64px 0}.services .section-desc{margin-bottom:30px}.service-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+      .service{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:9px;padding:15px 13px;min-height:190px;border-radius:8px}
+      .service-icon{width:39px;height:39px;font-size:18px;flex:none}
+      .service h3{font-size:18px;line-height:1.05;margin:0;min-height:36px}
+      .service p{font-size:10px;line-height:1.5}
+      .service:last-child{grid-column:1/-1;width:calc(50% - 6px)}
+      .about-grid{display:block}
+      .about-copy .section-title{font-size:48px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}
+      .contact-card{padding:20px}.brandlist{font-size:19px;gap:10px 22px}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <nav>
+      <a class="logo" href="#accueil">ILIAS<span>CARDIAG 21</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+      <ul class="navlinks" id="navLinks">
+        <li><a href="#services">Prestations</a></li>
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#rendezvous" class="navbtn">Demander un rendez-vous</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <header class="hero" id="accueil">
+    <div class="hero-car" aria-hidden="true"><img src="bmw-blanche.png" alt=""></div>
+    <div class="wrap hero-content">
+      <div class="eyebrow">Automotive electronics · Dijon</div>
+      <h1>ILIAS<br><span>CARDIAG</span><br>21.</h1>
+      <h2>La technologie au service<br>de votre véhicule.</h2>
+      <p>Diagnostic électronique, optimisation moteur et solutions automobiles. Une approche technique adaptée à votre véhicule.</p>
+      <div class="actions">
+        <a href="#rendezvous" class="btn btn-red">✉ Demander un rendez-vous</a>
+        <a href="tel:0758525191" class="btn btn-outline">☎ 07 58 52 51 91</a>
+      </div>
+      <div class="location">⌖ Dijon & alentours · Côte-d'Or</div>
+    </div>
+  </header>
+
+  <div class="brands">
+    <p>INTERVENTION MULTIMARQUE</p>
+    <div class="brandlist"><span>BMW</span><span>AUDI</span><span>VOLKSWAGEN</span><span>RENAULT</span><span>PEUGEOT</span><span>CITROËN</span><span>FORD</span><span>FIAT</span></div>
+  </div>
+
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="section-label" style="text-align:center">Nos compétences</div>
+      <h2 class="section-title">Nos <span class="red">prestations</span></h2>
+      <p class="section-desc">Des prestations électroniques et techniques pour identifier les problèmes, entretenir et optimiser votre véhicule dans le respect de la réglementation.</p>
+      <div class="service-grid">
+        <article class="service"><div class="service-icon">⚡</div><h3>Optimisation moteur</h3><p>Étude et optimisation des performances selon le véhicule, son état mécanique et les limites réglementaires applicables.</p></article>
+        <article class="service"><div class="service-icon">⛽</div><h3>Conversion E85</h3><p>Étude de compatibilité et solutions de conversion au bioéthanol, avec vérification des conditions d'homologation.</p></article>
+        <article class="service"><div class="service-icon">⌕</div><h3>Diagnostic électronique</h3><p>Lecture des calculateurs, analyse des défauts et recherche méthodique des pannes électroniques.</p></article>
+        <article class="service"><div class="service-icon">🔑</div><h3>Clés automobiles</h3><p>Programmation de clés et diagnostic des systèmes de démarrage et d'antidémarrage, selon faisabilité.</p></article>
+        <article class="service"><div class="service-icon">◈</div><h3>Cartographie moteur</h3><p>Lecture et analyse de cartographies, avec adaptations compatibles avec l'usage et la réglementation.</p></article>
+        <article class="service"><div class="service-icon">⚙</div><h3>Maintenance électronique</h3><p>Réinitialisation des indicateurs d'entretien et opérations de maintenance électronique adaptées.</p></article>
+        <article class="service"><div class="service-icon">🛠</div><h3>Systèmes antipollution</h3><p>Diagnostic et recherche de pannes sur FAP, EGR et AdBlue. Réparation des systèmes pour conserver leur conformité.</p></article>
+        <article class="service"><div class="service-icon">🚘</div><h3>Achat & vente</h3><p>Conseils et accompagnement dans la sélection de véhicules d'occasion.</p></article>
+        <article class="service"><div class="service-icon">✓</div><h3>Conseil automobile</h3><p>Un échange technique pour mieux comprendre un défaut, une panne ou les besoins de votre véhicule.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="apropos">
+    <div class="wrap about-grid">
+      <div class="about-copy">
+        <div class="section-label">Votre spécialiste automobile</div>
+        <h2 class="section-title">L'expertise au bon <span class="red">niveau.</span></h2>
+        <p>ILIAS CARDIAG 21 vous accompagne pour vos besoins en diagnostic électronique et solutions automobiles à Dijon et dans ses alentours.</p>
+        <p>Chaque demande commence par une compréhension du véhicule et du problème rencontré, afin d'orienter vers une intervention cohérente.</p>
+        <div class="checks">
+          <span><b>✓</b> Diagnostic multimarque</span><span><b>✓</b> Conseils techniques</span>
+          <span><b>✓</b> Étude personnalisée</span><span><b>✓</b> Dijon & alentours</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote" id="rendezvous">
+    <div class="wrap quote-layout">
+      <div class="quote-intro">
+        <div class="section-label">Parlons de votre véhicule</div>
+        <h2 class="section-title">Un besoin ?<br><span class="red">Un rendez-vous.</span></h2>
+        <p>Choisissez vos disponibilités et décrivez votre besoin. Votre demande de rendez-vous sera transmise par e-mail dès que le compte EmailJS sera configuré.</p>
+        <div class="contact-alt">
+          <a href="tel:0758525191">☎ 07 58 52 51 91</a>
+          <a href="https://www.snapchat.com/add/iliascardiag21" target="_blank" rel="noopener">Snapchat : iliascardiag21</a>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <form id="quoteForm">
+          <div class="form-grid">
+            <div class="field"><label for="name">Nom et prénom *</label><input id="name" name="name" autocomplete="name" required placeholder="Votre nom"></div>
+            <div class="field"><label for="email">Votre e-mail *</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="nom@exemple.fr"></div>
+            <div class="field"><label for="phone">Téléphone</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="06..."></div>
+            <div class="field"><label for="make">Marque *</label><select id="make" name="make" required><option value="">Choisir une marque</option><option>BMW</option><option>Audi</option><option>Volkswagen</option><option>Renault</option><option>Peugeot</option><option>Citroën</option><option>Mercedes-Benz</option><option>Ford</option><option>Fiat</option><option>Autre</option></select></div>
+            <div class="field"><label for="model">Modèle / motorisation</label><input id="model" name="model" placeholder="Ex. : Série 1 118i 1.5"></div>
+            <div class="field"><label for="year">Année</label><input id="year" name="year" inputmode="numeric" placeholder="Ex. : 2018"></div>
+            <div class="field full"><label for="service">Prestation souhaitée *</label><select id="service" name="service" required><option value="">Choisir une prestation</option><option>Diagnostic électronique</option><option>Optimisation moteur / cartographie</option><option>Conversion E85</option><option>Clé / antidémarrage</option><option>Maintenance électronique</option><option>Diagnostic FAP / EGR / AdBlue</option><option>Achat / vente de véhicule</option><option>Autre demande</option></select></div>
+            <div class="field"><label for="appointment_date">Date souhaitée</label><input id="appointment_date" name="appointment_date" type="date"></div>
+            <div class="field"><label for="appointment_time">Créneau souhaité</label><select id="appointment_time" name="appointment_time"><option value="">Indifférent</option><option>Matin</option><option>Après-midi</option><option>Fin de journée</option></select></div>
+            <div class="field full"><label for="message">Informations complémentaires *</label><textarea id="message" name="message" required placeholder="Décrivez le problème, les symptômes ou votre projet..."></textarea></div>
+          </div>
+          <button class="btn btn-red submit" type="submit" id="submitBtn">✉ Envoyer ma demande de rendez-vous</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite">Formulaire en attente de configuration EmailJS.</p>
+          <p class="form-foot">Les champs marqués d'un * sont obligatoires. N'indiquez pas de données sensibles dans votre message.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="logo">ILIAS<span>CARDIAG 21</span></div>
+    <p>Diagnostic & électronique automobile · Dijon et alentours</p>
+    <p>Appel : 07 58 52 51 91 · Snapchat : iliascardiag21</p>
+    <p>© 2026 ILIAS CARDIAG 21 · Tous droits réservés.</p>
+  </footer>
+
+  <a class="float-call" href="tel:0758525191" aria-label="Appeler ILIAS CARDIAG 21">☎</a>
+
+  <!--
+    CONFIGURATION EMAILJS À FAIRE APRÈS CRÉATION DU COMPTE :
+    1. Remplacer YOUR_PUBLIC_KEY, YOUR_SERVICE_ID et YOUR_TEMPLATE_ID.
+    2. Créer un template EmailJS avec les variables :
+       {{name}}, {{email}}, {{phone}}, {{make}}, {{model}},
+       {{year}}, {{service}}, {{appointment_date}}, {{appointment_time}}, {{message}}
+    3. Vérifier l'adresse de réception dans le tableau de bord EmailJS.
+    La clé publique peut être utilisée côté navigateur. Ne jamais placer
+    de clé privée ou de secret serveur dans ce fichier.
+  -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+    const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
+    const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+    menuToggle.addEventListener("click", () => {
+      const opened = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(opened));
+      menuToggle.textContent = opened ? "✕" : "☰";
+    });
+    navLinks.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.textContent = "☰";
+    }));
+
+    const form = document.getElementById("quoteForm");
+    const statusBox = document.getElementById("formStatus");
+    const submitBtn = document.getElementById("submitBtn");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      statusBox.className = "form-status";
+      if (!form.reportValidity()) return;
+
+      const configured = ![EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID]
+        .some(value => value.startsWith("YOUR_"));
+
+      if (!configured) {
+        statusBox.textContent = "Le formulaire est prêt, mais EmailJS n'est pas encore connecté. Configurez les 3 identifiants dans le code pour activer l'envoi.";
+        statusBox.classList.add("err");
+        return;
+      }
+
+      if (!window.emailjs) {
+        statusBox.textContent = "Le service de formulaire n'a pas pu se charger. Réessayez plus tard.";
+        statusBox.classList.add("err");
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Envoi en cours...";
+      try {
+        await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form);
+        statusBox.textContent = "Votre demande de rendez-vous a bien été envoyée. Elle reste à confirmer : nous vous recontacterons.";
+        statusBox.classList.add("ok");
+        form.reset();
+      } catch (error) {
+        statusBox.textContent = "L'envoi a échoué. Vous pouvez contacter directement le 07 58 52 51 91.";
+        statusBox.classList.add("err");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "✉ Envoyer ma demande de rendez-vous";
+      }
+    });
+  </script>
+</body>
+</html>
