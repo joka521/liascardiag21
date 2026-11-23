@@ -86,7 +86,7 @@
     footer p{font-size:10px;color:#777;line-height:2}
     .float-call{position:fixed;right:20px;bottom:20px;z-index:80;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:var(--red);color:#fff;font-size:23px;box-shadow:0 5px 25px #0009}
     .float-call:hover{background:#c9161d}
-    .privacy{font-size:10px;color:#777;margin-top:12px}
+    .privacy{font-size:10px;color:#777;margin-top:12px}\n    .hp-field{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
     @media(max-width:850px){.quote-layout{grid-template-columns:1fr;gap:28px}.about-grid{gap:30px}}
     @media(max-width:620px){
       nav{height:68px}.logo{font-size:22px}.menu-toggle{display:block}
@@ -181,7 +181,7 @@
       <div class="quote-intro">
         <div class="section-label">Parlons de votre véhicule</div>
         <h2 class="section-title">Un besoin ?<br><span class="red">Un rendez-vous.</span></h2>
-        <p>Choisissez vos disponibilités et décrivez votre besoin. Votre demande de rendez-vous sera transmise par e-mail dès que le compte EmailJS sera configuré.</p>
+        <p>Choisissez vos disponibilités et décrivez votre besoin. Votre demande sera directement transmise à l’espace ILIAS CARDIAG 21 du CRM.</p>
         <div class="contact-alt">
           <a href="tel:0758525191">☎ 07 58 52 51 91</a>
           <a href="https://www.snapchat.com/add/iliascardiag21" target="_blank" rel="noopener">Snapchat : iliascardiag21</a>
@@ -204,6 +204,7 @@
           </div>
           <button class="btn btn-red submit" type="submit" id="submitBtn">✉ Envoyer ma demande de rendez-vous</button>
           <p class="form-status" id="formStatus" role="status" aria-live="polite">Formulaire en attente de configuration EmailJS.</p>
+          <div class="hp-field" aria-hidden="true"><label for="website">Ne pas remplir</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
           <p class="form-foot">Les champs marqués d'un * sont obligatoires. N'indiquez pas de données sensibles dans votre message.</p>
         </form>
       </div>
@@ -219,21 +220,10 @@
 
   <a class="float-call" href="tel:0758525191" aria-label="Appeler ILIAS CARDIAG 21">☎</a>
 
-  <!--
-    CONFIGURATION EMAILJS À FAIRE APRÈS CRÉATION DU COMPTE :
-    1. Remplacer YOUR_PUBLIC_KEY, YOUR_SERVICE_ID et YOUR_TEMPLATE_ID.
-    2. Créer un template EmailJS avec les variables :
-       {{name}}, {{email}}, {{phone}}, {{make}}, {{model}},
-       {{year}}, {{service}}, {{appointment_date}}, {{appointment_time}}, {{message}}
-    3. Vérifier l'adresse de réception dans le tableau de bord EmailJS.
-    La clé publique peut être utilisée côté navigateur. Ne jamais placer
-    de clé privée ou de secret serveur dans ce fichier.
-  -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
-    const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
-    const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
-    const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+    // Endpoint de prévisualisation du CRM JSVD Auto21.
+    // À remplacer par l'URL de production lorsque le CRM sera publié.
+    const LEADS_API_URL = "https://project--10bcb2d6-f47e-42cf-90c4-388aed34ae41-dev.lovable.app/api/public/leads";
 
     const menuToggle = document.getElementById("menuToggle");
     const navLinks = document.getElementById("navLinks");
@@ -257,30 +247,50 @@
       statusBox.className = "form-status";
       if (!form.reportValidity()) return;
 
-      const configured = ![EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID]
-        .some(value => value.startsWith("YOUR_"));
+      const values = new FormData(form);
+      const fullName = String(values.get("name") || "").trim();
+      const email = String(values.get("email") || "").trim();
+      const phone = String(values.get("phone") || "").trim();
+      const make = String(values.get("make") || "").trim();
+      const model = String(values.get("model") || "").trim();
+      const year = String(values.get("year") || "").trim();
+      const service = String(values.get("service") || "").trim();
+      const date = String(values.get("appointment_date") || "").trim();
+      const time = String(values.get("appointment_time") || "").trim();
+      const details = String(values.get("message") || "").trim();
+      const vehicle = [make, model, year && "(" + year + ")", service && "Prestation : " + service,
+        date && "Date souhaitée : " + date, time && "Créneau : " + time].filter(Boolean).join(" · ");
 
-      if (!configured) {
-        statusBox.textContent = "Le formulaire est prêt, mais EmailJS n'est pas encore connecté. Configurez les 3 identifiants dans le code pour activer l'envoi.";
-        statusBox.classList.add("err");
-        return;
-      }
-
-      if (!window.emailjs) {
-        statusBox.textContent = "Le service de formulaire n'a pas pu se charger. Réessayez plus tard.";
-        statusBox.classList.add("err");
-        return;
-      }
+      const payload = {
+        business_unit: "iliascardiag21",
+        full_name: fullName,
+        email,
+        phone,
+        request_type: "autre",
+        vehicle_wanted: vehicle,
+        message: details,
+        website: String(values.get("website") || "")
+      };
 
       submitBtn.disabled = true;
       submitBtn.textContent = "Envoi en cours...";
+      statusBox.textContent = "Transmission sécurisée de votre demande...";
       try {
-        await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form);
-        statusBox.textContent = "Votre demande de rendez-vous a bien été envoyée. Elle reste à confirmer : nous vous recontacterons.";
+        const response = await fetch(LEADS_API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        if (!response.ok) {
+          const result = await response.json().catch(() => ({}));
+          throw new Error(result.error || "HTTP " + response.status);
+        }
+        statusBox.textContent = "Votre demande a bien été transmise. Le rendez-vous reste à confirmer : ILIAS vous recontactera.";
         statusBox.classList.add("ok");
         form.reset();
       } catch (error) {
-        statusBox.textContent = "L'envoi a échoué. Vous pouvez contacter directement le 07 58 52 51 91.";
+        console.error("Échec de l'envoi ILIAS :", error);
+        statusBox.textContent = "L'envoi n'a pas abouti. Réessayez ou contactez directement le 07 58 52 51 91.";
         statusBox.classList.add("err");
       } finally {
         submitBtn.disabled = false;
