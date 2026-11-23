@@ -267,6 +267,17 @@
   <a class="float-call" href="tel:0758525191" aria-label="Appeler ILIAS CARDIAG 21">☎</a>
 
   <script>
+    // Empêche Safari et les navigateurs mobiles de restaurer une ancienne position
+    // de défilement à l'ouverture de la page. Les liens d'ancrage restent fonctionnels.
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+    window.addEventListener("pageshow", () => {
+      if (!window.location.hash) {
+        window.scrollTo(0, 0);
+      }
+    });
+
     // Endpoint de production du CRM JSVD Auto21.
     const LEADS_API_URL = "https://jsvd-auto21-dealer-hub.lovable.app/api/public/leads";
 
