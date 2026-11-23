@@ -273,9 +273,12 @@
       history.scrollRestoration = "manual";
     }
     window.addEventListener("pageshow", () => {
-      if (!window.location.hash) {
-        window.scrollTo(0, 0);
+      // À chaque ouverture/rechargement, repartir de l'accueil même si
+      // le lien partagé contient une ancienne ancre (#rendezvous, etc.).
+      if (window.location.hash) {
+        history.replaceState(null, "", window.location.pathname + window.location.search);
       }
+      window.scrollTo(0, 0);
     });
 
     // Endpoint de production du CRM JSVD Auto21.
